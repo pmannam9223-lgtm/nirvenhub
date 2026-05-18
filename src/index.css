@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Premium Organic Palette */
+  --primary: #1B3C1A;      /* Forest Green */
+  --primary-light: #2D5A27;
+  --secondary: #8BA888;    /* Sage Green */
+  --accent: #D4E2D4;       /* Soft Mint */
+  --background: #F9F7F2;   /* Premium Cream */
+  --white: #FFFFFF;
+  --text-dark: #121212;
+  --text-muted: #6B7280;
+  --glass: rgba(255, 255, 255, 0.7);
+  --border-glass: rgba(255, 255, 255, 0.2);
+  
+  /* Modern Shadows */
+  --shadow-sm: 0 4px 12px rgba(27, 60, 26, 0.04);
+  --shadow-md: 0 12px 32px rgba(27, 60, 26, 0.08);
+  --shadow-lg: 0 24px 64px rgba(27, 60, 26, 0.12);
+  
+  /* Borders */
+  --radius-sm: 12px;
+  --radius-md: 24px;
+  --radius-lg: 40px;
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--background)] text-[var(--text-dark)] font-['Outfit'] antialiased overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-['Montserrat'] font-extrabold tracking-tight;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-6 md:px-12;
+  }
+
+  /* Premium Buttons */
+  .btn-primary {
+    @apply bg-[var(--primary)] text-white font-bold py-4 px-8 rounded-[20px] 
+           hover:bg-[var(--primary-light)] hover:translate-y-[-2px] hover:shadow-lg transition-all 
+           duration-300 active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2;
+  }
+
+  .btn-outline {
+    @apply border-2 border-[var(--primary)] text-[var(--primary)] font-bold py-4 px-8 rounded-[20px] 
+           hover:bg-[var(--primary)] hover:text-white transition-all duration-300;
+  }
+
+  /* Glassmorphism Cards */
+  .glass-card {
+    @apply bg-[var(--glass)] backdrop-blur-[24px] border border-[var(--border-glass)] 
+           rounded-[var(--radius-md)] shadow-[var(--shadow-md)];
+  }
+
+  /* Magazine Style Grid */
+  .product-grid {
+    @apply grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-8 sm:gap-x-10 sm:gap-y-16;
+  }
+
+  /* Hero Section Special Styling */
+  .mesh-gradient {
+    background: radial-gradient(at 0% 0%, hsla(118,25%,81%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(118,35%,91%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(118,25%,81%,1) 0, transparent 50%);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary/30 rounded-full hover:bg-secondary/50 transition-colors;
+}
+
+/* Entrance Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Hover Effects */
+.hover-lift {
+  @apply transition-transform duration-500 hover:translate-y-[-8px] hover:shadow-2xl;
+}
+
+.image-pan {
+  @apply overflow-hidden;
+}
+.image-pan img {
+  @apply transition-transform duration-1000 hover:scale-110;
+}
