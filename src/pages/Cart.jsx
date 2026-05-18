@@ -277,10 +277,10 @@ const Cart = () => {
                 <span>{cart.reduce((a, b) => a + b.quantity, 0)}</span>
               </div>
 
-              <div className="flex justify-between text-primary/60">
+              {/* <div className="flex justify-between text-primary/60">
                 <span>Delivery</span>
                 <span className="text-green-600 font-bold">Free</span>
-              </div>
+              </div> */}
 
               <div className="border-t pt-4 flex justify-between">
                 <span className="font-black text-primary">Total</span>
