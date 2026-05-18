@@ -315,10 +315,27 @@ const ProductDetail = () => {
 
             <h1 className="text-4xl md:text-5xl font-black text-primary leading-tight">{product.name}</h1>
 
-            <div className="flex items-baseline gap-4 pt-2">
-              <p className="text-4xl md:text-5xl font-black text-primary">£{product.selling_price}</p>
-              {product.original_price > product.selling_price && <p className="text-xl md:text-2xl text-gray-300 line-through font-bold">£{product.original_price}</p>}
-            </div>
+           <div className="flex flex-col gap-2 pt-2">
+
+  <div className="flex items-baseline gap-4">
+    <p className="text-4xl md:text-5xl font-black text-primary">
+      £{product.selling_price}
+    </p>
+
+    {product.quantity_description && (
+      <span className="text-xs md:text-sm font-black text-gray-400 uppercase tracking-[0.25em]">
+        / {product.quantity_description}
+      </span>
+    )}
+
+    {product.original_price > product.selling_price && (
+      <p className="text-xl md:text-2xl text-gray-300 line-through font-bold">
+        £{product.original_price}
+      </p>
+    )}
+  </div>
+
+</div>
 
             <p className="text-lg text-primary/60 font-medium leading-relaxed">
               {product.description}
