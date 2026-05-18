@@ -396,11 +396,30 @@ const Profile = () => {
                           </span>
                         </div>
                         
-                        <div className="mt-3 flex gap-2">
-                          {order.items?.map((item, idx) => (
-                             <img key={idx} src={item.product_details?.image} className="w-10 h-10 object-cover rounded-xl border border-gray-100" />
-                          ))}
-                        </div>
+                        <div className="mt-4 space-y-3">
+  {order.items?.map((item, idx) => (
+    <div
+      key={idx}
+      className="flex items-center gap-3"
+    >
+      <img
+        src={item.product_details?.image}
+        alt={item.product_details?.name}
+        className="w-10 h-10 object-cover rounded-xl border border-gray-100"
+      />
+
+      <div className="flex flex-col">
+        <span className="text-sm font-bold text-primary leading-tight">
+          {item.product_details?.name}
+        </span>
+
+        <span className="text-[10px] uppercase tracking-widest text-primary/40 font-black">
+          Qty: {item.quantity}
+        </span>
+      </div>
+    </div>
+  ))}
+</div>
                       </div>
                     </div>
 
