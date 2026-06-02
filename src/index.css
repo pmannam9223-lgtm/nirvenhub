@@ -104,3 +104,19 @@
 .image-pan img {
   @apply transition-transform duration-1000 hover:scale-110;
 }
+.marquee-content {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
