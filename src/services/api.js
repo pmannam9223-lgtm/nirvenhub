@@ -10,6 +10,20 @@ export const fetchCategories = async () => {
     return [];
   }
 };
+export const fetchAnnouncements = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/announcements/`);
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching announcements:", error);
+    return [];
+  }
+};
 
 export const fetchProducts = async (filters = {}) => {
   try {
