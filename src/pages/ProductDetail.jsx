@@ -267,7 +267,7 @@ const ProductDetail = () => {
   };
 
   return (
-    <div className="container pt-16 md:pt-20 pb-40">
+    <div className="container pt-16 md:pt-20 pb-40 overflow-x-hidden">
       {/* Back Button */}
       <Link to="/" className="inline-flex items-center gap-3 text-gray-400 hover:text-primary mb-12 font-black text-xs uppercase tracking-widest transition-all group">
         <div className="w-8 h-8 rounded-full border border-gray-100 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
