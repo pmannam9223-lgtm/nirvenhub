@@ -57,7 +57,7 @@ export const ProductCard = ({ product }) => {
           </div>
         </div>
         
-        <h3 className="text-lg font-black text-primary line-clamp-3 leading-tight min-h-[72px] group-hover:text-primary-light transition-colors">
+        <h3 className="text-base md:text-lg font-black text-primary line-clamp-3 leading-snug min-h-[68px] group-hover:text-primary-light transition-colors">
   {product.name}
 </h3>
         
