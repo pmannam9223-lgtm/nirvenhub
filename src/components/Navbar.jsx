@@ -303,7 +303,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Search, ShoppingCart, User as UserIcon } from 'lucide-react';
 import { useCart } from '../context/CartContext';
-import { fetchCategories } from '../services/api';
+import { fetchCategories, fetchAnnouncements } from '../services/api';
 import logoImg from '../assets/logo.png';
 
 const Navbar = () => {
@@ -331,6 +331,18 @@ const Navbar = () => {
     };
     loadCategories();
   }, []);
+  useEffect(() => {
+  const loadAnnouncements = async () => {
+    try {
+      const data = await fetchAnnouncements();
+      setAnnouncements(data);
+    } catch (err) {
+      console.error("Error fetching announcements:", err);
+    }
+  };
+
+  loadAnnouncements();
+}, []);
 
   // ✅ Search handler
   const handleSearch = (e) => {
