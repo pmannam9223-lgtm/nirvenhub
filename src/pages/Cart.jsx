@@ -154,15 +154,165 @@
 // };
 
 // export default Cart;
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+// import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, ChevronLeft } from 'lucide-react';
+// import { motion, AnimatePresence } from 'framer-motion';
+// import { useCart } from '../context/CartContext';
+
+// const Cart = () => {
+//   const { cart, removeFromCart, updateQuantity, cartTotal } = useCart();
+
+//   if (cart.length === 0) {
+//     return (
+//       <div className="container py-32 text-center space-y-10">
+//         <div className="w-28 h-28 bg-primary/5 rounded-[32px] flex items-center justify-center mx-auto text-primary">
+//           <ShoppingBag size={40} />
+//         </div>
+//         <h2 className="text-3xl font-black text-primary">Your cart is empty</h2>
+//         <Link to="/" className="btn-primary !rounded-full px-8 py-4">
+//           Start Shopping
+//         </Link>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="container pt-16 md:pt-20 pb-40">
+
+//       {/* HEADER */}
+//       <div className="flex items-center justify-between mb-12">
+//         <h1 className="text-3xl md:text-5xl font-black text-primary">
+//           Your Cart
+//         </h1>
+
+//         <Link to="/" className="hidden md:flex items-center gap-2 text-xs font-black text-primary/40 hover:text-primary uppercase tracking-widest">
+//           <ChevronLeft size={16} /> Continue Shopping
+//         </Link>
+//       </div>
+
+//       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+//         {/* PRODUCTS */}
+//         <div className="lg:col-span-8 space-y-6">
+//           <AnimatePresence>
+//             {cart.map((item, i) => (
+//               <motion.div
+//                 key={item.id}
+//                 initial={{ opacity: 0, y: 10 }}
+//                 animate={{ opacity: 1, y: 0 }}
+//                 exit={{ opacity: 0 }}
+//                 transition={{ delay: i * 0.05 }}
+//                 className="flex gap-4 md:gap-6 items-center bg-white rounded-2xl p-4 md:p-6 border border-gray-100 hover:shadow-md transition"
+//               >
+
+//                 {/* IMAGE */}
+//                 <div className="w-20 h-20 md:w-28 md:h-28 rounded-xl overflow-hidden bg-gray-50">
+//                   <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+//                 </div>
+
+//                 {/* DETAILS */}
+//                 <div className="flex-1 space-y-2">
+//                   <h3 className="text-base md:text-lg font-black text-primary leading-tight">
+//                     {item.name}
+//                   </h3>
+
+//                   <p className="text-xs text-primary/40">
+//                     £{item.selling_price || item.price} each
+//                   </p>
+
+//                   {/* QUANTITY */}
+//                   <div className="flex items-center gap-2 mt-2">
+//                     <button
+//                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
+//                       className="w-8 h-8 flex items-center justify-center border rounded-lg text-primary"
+//                     >
+//                       <Minus size={14} />
+//                     </button>
+
+//                     <span className="w-8 text-center font-black text-primary">
+//                       {item.quantity}
+//                     </span>
+
+//                     <button
+//                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
+//                       disabled={item.quantity >= item.stock}
+//                       className={`w-8 h-8 flex items-center justify-center border rounded-lg ${item.quantity >= item.stock ? 'text-gray-300 bg-gray-50 cursor-not-allowed' : 'text-primary hover:bg-gray-50'}`}
+//                     >
+//                       <Plus size={14} />
+//                     </button>
+//                   </div>
+//                 </div>
+
+//                 {/* PRICE */}
+//                 <div className="text-right space-y-2">
+//                   <p className="text-lg md:text-xl font-black text-primary">
+//                     £{((item.selling_price || item.price) * item.quantity).toFixed(2)}
+//                   </p>
+
+//                   <button
+//                     onClick={() => removeFromCart(item.id)}
+//                     className="text-red-400 hover:text-red-600 text-xs"
+//                   >
+//                     Remove
+//                   </button>
+//                 </div>
+
+//               </motion.div>
+//             ))}
+//           </AnimatePresence>
+//         </div>
+
+//         {/* SUMMARY */}
+//         <div className="lg:col-span-4">
+//           <div className="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 space-y-6 sticky top-24">
+
+//             <h3 className="text-xl font-black text-primary">
+//               Order Summary
+//             </h3>
+
+//             <div className="space-y-4 text-sm">
+//               <div className="flex justify-between text-primary/60">
+//                 <span>Items</span>
+//                 <span>{cart.reduce((a, b) => a + b.quantity, 0)}</span>
+//               </div>
+
+//               {/* <div className="flex justify-between text-primary/60">
+//                 <span>Delivery</span>
+//                 <span className="text-green-600 font-bold">Free</span>
+//               </div> */}
+
+//               <div className="border-t pt-4 flex justify-between">
+//                 <span className="font-black text-primary">Total</span>
+//                 <span className="text-xl font-black text-primary">
+//                   £{cartTotal.toFixed(2)}
+//                 </span>
+//               </div>
+//             </div>
+
+//             <Link
+//               to="/checkout"
+//               className="w-full btn-primary py-4 rounded-xl flex items-center justify-center gap-2 text-lg"
+//             >
+//               Checkout <ArrowRight size={18} />
+//             </Link>
+
+//           </div>
+//         </div>
+
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Cart;
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, ChevronLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../context/CartContext';
-
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity, cartTotal } = useCart();
-
   if (cart.length === 0) {
     return (
       <div className="container py-32 text-center space-y-10">
@@ -176,66 +326,55 @@ const Cart = () => {
       </div>
     );
   }
-
   return (
     <div className="container pt-16 md:pt-20 pb-40">
-
       {/* HEADER */}
       <div className="flex items-center justify-between mb-12">
         <h1 className="text-3xl md:text-5xl font-black text-primary">
           Your Cart
         </h1>
-
         <Link to="/" className="hidden md:flex items-center gap-2 text-xs font-black text-primary/40 hover:text-primary uppercase tracking-widest">
           <ChevronLeft size={16} /> Continue Shopping
         </Link>
       </div>
-
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-
         {/* PRODUCTS */}
         <div className="lg:col-span-8 space-y-6">
           <AnimatePresence>
             {cart.map((item, i) => (
               <motion.div
-                key={item.id}
+                key={item.cartItemId || item.id}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ delay: i * 0.05 }}
                 className="flex gap-4 md:gap-6 items-center bg-white rounded-2xl p-4 md:p-6 border border-gray-100 hover:shadow-md transition"
               >
-
                 {/* IMAGE */}
                 <div className="w-20 h-20 md:w-28 md:h-28 rounded-xl overflow-hidden bg-gray-50">
                   <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                 </div>
-
                 {/* DETAILS */}
                 <div className="flex-1 space-y-2">
                   <h3 className="text-base md:text-lg font-black text-primary leading-tight">
-                    {item.name}
+                    {item.name} {item.variant_size && <span className="text-sm font-medium text-primary/60">({item.variant_size})</span>}
                   </h3>
-
                   <p className="text-xs text-primary/40">
                     £{item.selling_price || item.price} each
                   </p>
-
                   {/* QUANTITY */}
                   <div className="flex items-center gap-2 mt-2">
                     <button
-                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                      onClick={() => updateQuantity(item.cartItemId || item.id, item.quantity - 1)}
                       className="w-8 h-8 flex items-center justify-center border rounded-lg text-primary"
                     >
                       <Minus size={14} />
                     </button>
-
                     <span className="w-8 text-center font-black text-primary">
                       {item.quantity}
                     </span>
-
                     <button
-                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                      onClick={() => updateQuantity(item.cartItemId || item.id, item.quantity + 1)}
                       disabled={item.quantity >= item.stock}
                       className={`w-8 h-8 flex items-center justify-center border rounded-lg ${item.quantity >= item.stock ? 'text-gray-300 bg-gray-50 cursor-not-allowed' : 'text-primary hover:bg-gray-50'}`}
                     >
@@ -243,45 +382,37 @@ const Cart = () => {
                     </button>
                   </div>
                 </div>
-
                 {/* PRICE */}
                 <div className="text-right space-y-2">
                   <p className="text-lg md:text-xl font-black text-primary">
                     £{((item.selling_price || item.price) * item.quantity).toFixed(2)}
                   </p>
-
                   <button
-                    onClick={() => removeFromCart(item.id)}
+                    onClick={() => removeFromCart(item.cartItemId || item.id)}
                     className="text-red-400 hover:text-red-600 text-xs"
                   >
                     Remove
                   </button>
                 </div>
-
               </motion.div>
             ))}
           </AnimatePresence>
         </div>
-
         {/* SUMMARY */}
         <div className="lg:col-span-4">
           <div className="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 space-y-6 sticky top-24">
-
             <h3 className="text-xl font-black text-primary">
               Order Summary
             </h3>
-
             <div className="space-y-4 text-sm">
               <div className="flex justify-between text-primary/60">
                 <span>Items</span>
                 <span>{cart.reduce((a, b) => a + b.quantity, 0)}</span>
               </div>
-
-              {/* <div className="flex justify-between text-primary/60">
+              <div className="flex justify-between text-primary/60">
                 <span>Delivery</span>
                 <span className="text-green-600 font-bold">Free</span>
-              </div> */}
-
+              </div>
               <div className="border-t pt-4 flex justify-between">
                 <span className="font-black text-primary">Total</span>
                 <span className="text-xl font-black text-primary">
@@ -289,20 +420,16 @@ const Cart = () => {
                 </span>
               </div>
             </div>
-
             <Link
               to="/checkout"
               className="w-full btn-primary py-4 rounded-xl flex items-center justify-center gap-2 text-lg"
             >
               Checkout <ArrowRight size={18} />
             </Link>
-
           </div>
         </div>
-
       </div>
     </div>
   );
 };
-
 export default Cart;
