@@ -313,7 +313,7 @@ const Navbar = () => {
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
-
+  const [announcements, setAnnouncements] = useState([]);
   // ✅ Active route checker
   const isActive = (path) => {
     return location.pathname.startsWith(path);
@@ -343,8 +343,22 @@ const Navbar = () => {
 
   return (
     <>
+      {/* ANNOUNCEMENT MARQUEE */}
+<div className="fixed top-0 left-0 w-full h-8 bg-primary text-white z-[60] overflow-hidden flex items-center">
+  <div className="marquee-content">
+    {[...announcements, ...announcements].map((item, index) => (
+      <span
+        key={`${item.id}-${index}`}
+        className="mx-8 whitespace-nowrap text-xs md:text-sm font-semibold"
+      >
+        {item.message}
+      </span>
+    ))}
+  </div>
+</div>
       {/* MAIN NAVBAR */}
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full px-4 flex justify-center">
+      <nav className="fixed top-10 left-1/2 -translate-x-1/2 z-50 w-full px-4 flex justify-center">
+
         <div className="w-full max-w-6xl bg-white/70 backdrop-blur-xl rounded-[24px] px-6 py-3 flex items-center justify-between shadow-lg border border-white/40">
 
           {/* LOGO */}
