@@ -464,8 +464,9 @@ const ProductDetail = () => {
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000);
   };
-  const currentStock = selectedVariant ? selectedVariant.stock : product.stock;
-  const currentPrice = selectedVariant ? selectedVariant.price : product.selling_price;
+  const currentStock = selectedVariant ? selectedVariant.stock : 0;
+  const currentPrice = selectedVariant ? selectedVariant.selling_price : 0;
+  const originalPrice = selectedVariant ? selectedVariant.original_price : 0;
   return (
     <div className="container pt-16 md:pt-20 pb-40">
       {/* Back Button */}
@@ -513,7 +514,7 @@ const ProductDetail = () => {
             <h1 className="text-4xl md:text-5xl font-black text-primary leading-tight">{product.name}</h1>
             <div className="flex items-baseline gap-4 pt-2">
               <p className="text-4xl md:text-5xl font-black text-primary">£{currentPrice}</p>
-              {!selectedVariant && product.original_price > product.selling_price && <p className="text-xl md:text-2xl text-gray-300 line-through font-bold">£{product.original_price}</p>}
+              {originalPrice && originalPrice > currentPrice && <p className="text-xl md:text-2xl text-gray-300 line-through font-bold">£{originalPrice}</p>}
             </div>
             <p className="text-lg text-primary/60 font-medium leading-relaxed">
               {product.description}
@@ -530,7 +531,7 @@ const ProductDetail = () => {
                       onClick={() => { setSelectedVariant(variant); setQuantity(1); }}
                       className={`px-6 py-3 rounded-xl border-2 font-black text-sm transition-all ${selectedVariant?.id === variant.id ? 'border-primary bg-primary text-white' : 'border-gray-200 text-gray-400 hover:border-primary/30'}`}
                     >
-                      {variant.size}
+                      {variant.quantity_description}
                     </button>
                   ))}
                 </div>
