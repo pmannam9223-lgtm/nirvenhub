@@ -501,8 +501,8 @@ const Checkout = () => {
                   </div>
                   <div className="flex-1">
                      <h4 className="text-sm font-bold text-primary line-clamp-1">{item.name} {item.variant_size && <span className="text-xs font-medium text-primary/60">({item.variant_size})</span>}</h4>
-                     <p className="text-[10px] text-primary/50 uppercase tracking-widest">{item.quantity} x £{item.selling_price || item.price}</p>
-                     <p className="text-sm font-black text-primary">£{((item.selling_price || item.price) * item.quantity).toFixed(2)}</p>
+                     <p className="text-[10px] text-primary/50 uppercase tracking-widest">{item.quantity} x £{item.selling_price}</p>
+                     <p className="text-sm font-black text-primary">£{(item.selling_price * item.quantity).toFixed(2)}</p>
                   </div>
                 </div>
               ))}
