@@ -87,9 +87,11 @@ export const CartProvider = ({ children }) => {
   }, [cart]);
   const addToCart = (product, quantity, variant = null) => {
     setCart((prevCart) => {
-      const cartItemId = variant ? `${product.id}-${variant.id}` : `${product.id}`;
-      const stockLimit = variant ? variant.stock : product.stock;
-      const priceToUse = variant ? variant.price : (product.selling_price || product.price);
+      const actualVariant = variant || (product.variants && product.variants.length > 0 ? product.variants[0] : null);
+      if (!actualVariant) return prevCart;
+      const cartItemId = `${product.id}-${actualVariant.id}`;
+      const stockLimit = actualVariant.stock;
+      const priceToUse = actualVariant.selling_price;
       
       const existingItemIndex = prevCart.findIndex((item) => item.cartItemId === cartItemId);
       
@@ -109,9 +111,10 @@ export const CartProvider = ({ children }) => {
       return [...prevCart, { 
         ...product, 
         cartItemId, 
-        variant_id: variant ? variant.id : null,
-        variant_size: variant ? variant.size : null,
+        variant_id: actualVariant.id,
+        variant_size: actualVariant.quantity_description,
         selling_price: priceToUse,
+        weight: actualVariant.weight,
         stock: stockLimit,
         quantity: initialQuantity 
       }];
