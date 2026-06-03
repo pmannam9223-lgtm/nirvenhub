@@ -224,9 +224,9 @@ export const ProductCard = ({ product }) => {
           </div>
         </div>
         
-        <h3 className="text-lg font-black text-primary line-clamp-2 leading-tight min-h-[56px] group-hover:text-primary-light transition-colors">
-          {product.name}
-        </h3>
+        <h3 className="text-base md:text-lg font-black text-primary line-clamp-3 leading-snug min-h-[68px] group-hover:text-primary-light transition-colors">
+  {product.name}
+</h3>
         
         <div className="flex items-center justify-between pt-2">
           <div className="flex flex-col flex-1">
