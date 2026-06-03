@@ -418,7 +418,7 @@ const OrderSuccess = () => {
                     <div className="flex-1 text-left">
                       <h4 className="text-sm font-bold text-primary">
                         {item.product_details?.name || 'Product'}
-                        {item.variant_details && <span className="text-xs font-medium text-primary/60 ml-1">({item.variant_details.size})</span>}
+                        {item.variant_details && <span className="text-xs font-medium text-primary/60 ml-1">({item.variant_details.quantity_description})</span>}
                       </h4>
                       <p className="text-[10px] text-primary/50 uppercase tracking-widest">Qty: {item.quantity} × £{item.price}</p>
                     </div>
